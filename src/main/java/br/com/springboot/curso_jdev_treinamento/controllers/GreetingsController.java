@@ -96,7 +96,15 @@ public class GreetingsController {
     	
     	Usuario user =  usuarioRepository.saveAndFlush(usuario);
     	
-    	return new ResponseEntity<Usuario>(user, HttpStatus.OK);
+    	return new ResponseEntity<Usuario>(user, HttpStatus.OK);    	
+    }
+    
+    @GetMapping(value = "bsucarPorNome") /*mapeia a URL*/
+    @ResponseBody 
+    public ResponseEntity<List<Usuario>> bsucarPorNome(@RequestParam(name = "name") String name){ 
     	
+    	List<Usuario> usuario =  usuarioRepository.bsucarPorNome(name.trim().toUpperCase());    	
+    	
+    	return new ResponseEntity<List<Usuario>> (usuario, HttpStatus.OK);
     }
 }
