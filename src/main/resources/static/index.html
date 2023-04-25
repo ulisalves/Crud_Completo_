@@ -7,6 +7,15 @@
 <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+<style type="text/css">
+	html{
+		margin-left:5%;
+		margin-right:5%;
+		margin-top: 5%;
+	}
+
+</style>
+
 </head>
 <body>
 
@@ -48,6 +57,7 @@
           </div>
           <button type="button" class="btn btn-success" onclick="pesquisarUser()">Buscar</button>
         </form>
+		<div style="heith: 300px; overflow: scroll;">
 		<table class="table" id="tabelaresultados">
 			<thead>
 				<tr>
@@ -60,6 +70,7 @@
 			<tbody>
 			</tbody>
 		</table>
+		</div>
 	  </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -128,6 +139,18 @@
     		var id = $("#id").val();
     		var nome = $("#nome").val();
     		var idade = $("#idade").val();
+    		
+    		if (nome == null || nome != null && nome.trim() == ''){
+    			$("#nome").focus();
+    			alert('Informe o nome');
+    			return;
+    		}
+    		
+    		if (idade == null || idade != null && nome.trim() == ''){
+    			$("#idade").focus();
+    			alert('Informe a idade');
+    			return;
+    		}
 
     		$.ajax({
     			  	method: "POST",
